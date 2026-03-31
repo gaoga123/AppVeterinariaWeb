@@ -141,6 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+WHITENOISE_MANIFEST_STRICT = False
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -181,5 +182,3 @@ LOGIN_URL = 'django.contrib.auth.views.login'
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 SITE_ID = 1
-
-WHITENOISE_MANIFEST_STRICT = False
