@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+Disallow: /panel/
+Disallow: /login/
+Disallow: /logout/
+Disallow: /carrito/finalizar-compra/
+Disallow: /resenias/opinion-enviada/
+Disallow: /mascotas/registro-exitoso/
+Disallow: /mascotas/buscar/
+Disallow: /mascotas/buscar/ajax/
+Disallow: /turnos/turno-confirmado/
+
+
+Sitemap: http://veterinariaweb.com/sitemap.xml

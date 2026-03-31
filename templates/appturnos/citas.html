@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+
+{% block meta %}
+    <meta name="description" content="Solicite un turno veterinario de forma rápida en Veterinaria Web. Agende citas para sus mascotas en pocos pasos.">
+    <meta name="robots" content="index, follow">
+{% endblock %}
+
+{% block title %}Solicitud de Turnos | Veterinaria Web{% endblock %}
+
+{% block header %}
+    <li class="nav-item">
+        <a class="nav-link opcion-header" href="{% url 'panel' %}" aria-label="Volver al panel principal">
+            ⬅️ Regresar
+        </a>
+    </li>
+{% endblock %}
+
+{% block contenedor %}
+<main class="container-fluid resenias">
+
+    <header class="py-4 text-center">
+        <div class="container">
+            <div class="eslogan">
+                <h1>Agendar Turno Veterinario</h1>
+                <p class="text-muted">
+                    Reserve una cita para su mascota de forma rápida y segura
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="container bienvenida mt-4 text-center">
+        <h2>Complete los datos del turno</h2>
+        <p class="text-muted">
+            Seleccione la mascota, el profesional y la fecha disponible para su atención
+        </p>
+        <hr>
+    </section>
+
+    <section class="container my-4">
+        <div class="card card-turno shadow-sm">
+            <div class="card-body">
+
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    <fieldset>
+                        <legend class="visually-hidden">Datos del turno veterinario</legend>
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="id_mascota">Mascota</label>
+                                {{ form.mascota }}
+                                <small class="text-muted">
+                                    Seleccione la mascota que recibirá atención
+                                </small>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="id_veterinario">Veterinario</label>
+                                {{ form.veterinario }}
+                                <small class="text-muted">
+                                    Elija el profesional disponible
+                                </small>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="id_fecha">Fecha y hora</label>
+                                {{ form.fecha }}
+
+                                {% if form.fecha.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.fecha.errors }}
+                                    </div>
+                                {% endif %}
+
+                                <small class="text-muted">
+                                    Seleccione una fecha y horario disponibles
+                                </small>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label" for="id_motivo">Motivo de la consulta</label>
+                                {{ form.motivo }}
+                                <small class="text-muted">
+                                    Describa brevemente el motivo del turno (opcional pero recomendado)
+                                </small>
+                            </div>
+
+                            <div class="col-12 d-grid mt-3">
+                                <button 
+                                    type="submit"
+                                    class="btn btn-primary btn-lg btn-submit"
+                                    aria-label="Confirmar turno veterinario"
+                                >
+                                    Confirmar Turno
+                                </button>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MedicalAppointment",
+        "name": "Turno veterinario",
+        "description": "Reserva de turno para atención veterinaria"
+    }
+</script>

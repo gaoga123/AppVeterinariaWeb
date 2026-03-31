@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block meta %}
+    <meta name="description" content="Lea y deje reseñas sobre nuestra veterinaria. Comparta su experiencia y ayude a otros dueños de mascotas a elegir el mejor cuidado.">
+    <meta name="robots" content="index, follow">
+{% endblock %}
+
+{% block title %}Creación de Reseña | Veterinaria Web{% endblock %}
+
+{% block header %}
+    <li class="nav-item">
+        <a class="nav-link opcion-header" href="{% url 'panel' %}" aria-label="Volver al panel principal">
+            ⬅️ Regresar
+        </a>
+    </li>
+{% endblock %}
+
+{% block contenedor %}
+<main class="container-fluid resenias">
+
+    <header class="py-4 text-center">
+        <div class="container">
+            <div class="eslogan">
+                <h1>Reseñas de Clientes</h1>
+                <p class="text-muted">
+                    Comparta su opinión sobre nuestro servicio veterinario
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="container bienvenida mt-4 text-center">
+        <h2>Deje su reseña</h2>
+        <p class="text-muted">
+            Su opinión es importante para mejorar la calidad de atención y ayudar a otros dueños de mascotas
+        </p>
+        <hr>
+    </section>
+
+    <section class="container my-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    <fieldset>
+                        <legend class="visually-hidden">Formulario de reseña de clientes</legend>
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="id_puntuacion">Puntuación</label>
+                                {{ form.puntuacion }}
+                                <small class="text-muted">
+                                    Seleccione una calificación según su experiencia
+                                </small>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="id_comentarios">Comentarios</label>
+                                {{ form.comentarios }}
+                                <div class="text-end text-muted small" id="contador">
+                                    0 / 300 caracteres
+                                </div>
+                                <small class="text-muted">
+                                    Describa su experiencia con nuestro servicio veterinario
+                                </small>
+                            </div>
+
+                            <div class="col-12 d-grid mt-3">
+                                <button 
+                                    type="submit"
+                                    class="btn btn-primary btn-lg btn-submit"
+                                    aria-label="Guardar reseña de cliente"
+                                >
+                                    Guardar Reseña
+                                </button>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+{% block extra_js %}
+{% load static %}
+<script>
+    const textarea = document.querySelector("textarea");
+    const contador = document.getElementById("contador");
+
+    textarea.addEventListener("input", () => {
+        contador.textContent = textarea.value.length + " / 300 caracteres";
+    });
+</script>
+{% endblock %}
+
+{% endblock %}
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "itemReviewed": {
+        "@type": "LocalBusiness",
+        "name": "Veterinaria Web"
+    },
+    "reviewBody": "Opiniones de clientes sobre la atención veterinaria",
+    "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+    }
+}
+</script>
+

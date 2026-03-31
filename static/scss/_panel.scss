@@ -1,0 +1,88 @@
+.opcion-header {
+    color: $color3;
+}
+
+.eslogan {
+    h1 {
+        color: $color2;
+    }
+}
+
+.bienvenida {
+    h3 {
+        color: inherit;
+        font-weight: normal;
+    }
+    hr {
+        border: 1px solid #ccc;
+    }
+}
+
+.opciones-desarrollo {
+    .btn-opcion {
+        border: 4px solid $color3;
+        font-weight: bold;
+    }
+}
+
+.container {
+    .card {
+        border-radius: 12px;
+        border: 4px solid $color3;
+        background-color: $color4;
+    }
+
+    .card-body {
+        color: $color5;
+    }
+
+    .text-muted {
+        color: $color6 !important;
+        font-style: italic;
+    }
+}
+
+#nota-form {
+    #nota-input {
+        border: 4px solid $color6;
+        border-radius: 6px;
+
+        &:focus {
+            border-color: $color1;
+            box-shadow: none;
+        }
+    }
+
+    button {
+        border: 4px solid $color3;
+        font-weight: bold;
+    }
+}
+
+#notas-lista {
+    .list-group-item {
+        border: 2px solid $color6;
+        margin-bottom: 0.5rem;
+        border-radius: 6px;
+        background-color: $color3;
+        color: $color5;
+        font-weight: 500;
+    }
+}
+
+
+.otras-opciones {
+    h3 {
+        color: inherit;
+    }
+    hr {
+        border: 1px solid #ccc;
+    }
+}
+
+.contenedor-logout {
+    .btn-logout {
+        border: 4px solid $color3;
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block title %}Política de Privacidad | Veterinaria Web{% endblock %}
+
+{% block meta_description %}
+    Política de privacidad de Veterinaria Web. Conozca cómo protegemos los datos de usuarios y mascotas en nuestra plataforma.
+{% endblock %}
+
+{% block meta_robots %}
+    <meta name="robots" content="index, follow">
+{% endblock %}
+
+{% block header %}
+    <li class="nav-item">
+        <a class="nav-link opcion-header" onclick="history.back()" title="Volver a la página anterior">
+            ⬅️ Regresar
+        </a>
+    </li>
+ 
+{% endblock %}
+
+{% block contenedor %}
+<div class="container-fluid" role="main">
+
+    <header role="banner">
+        <div class="container">
+            <div class="eslogan">
+                <h1 id="privacidad">Política de Privacidad de Veterinaria Web</h1>
+                <p class="text-secundario">
+                    En esta sección se explica cómo recopilamos, utilizamos y protegemos
+                    la información de nuestros usuarios y sus mascotas dentro de nuestra plataforma.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <br>
+
+    <section class="container my-4" aria-labelledby="privacidad">
+        <div class="card card-panel">
+            <div class="card-body">
+
+                <h2>1. Información que recopilamos</h2>
+                <p>
+                    En Veterinaria Web recopilamos información básica como nombre de usuario,
+                    datos de contacto y registros relacionados con sus mascotas, con el objetivo
+                    de brindar un servicio veterinario digital eficiente y personalizado.
+                </p>
+
+                <hr>
+
+                <h2>2. Uso de la información</h2>
+                <p>Utilizamos la información recopilada para:</p>
+                <ul>
+                    <li>Gestionar turnos veterinarios online</li>
+                    <li>Administrar el registro de mascotas</li>
+                    <li>Mejorar la experiencia del usuario dentro de la plataforma</li>
+                    <li>Garantizar el correcto funcionamiento del sistema</li>
+                </ul>
+
+                <hr>
+
+                <h2>3. Protección de datos</h2>
+                <p>
+                    Aplicamos medidas de seguridad técnicas y organizativas para proteger
+                    la información personal de nuestros usuarios y evitar accesos no autorizados.
+                </p>
+
+                <hr>
+
+                <h2>4. Compartir información</h2>
+                <p>
+                    No compartimos datos personales con terceros, excepto en casos donde exista
+                    una obligación legal o requerimiento de autoridades competentes.
+                </p>
+
+                <hr>
+
+                <h2>5. Derechos del usuario</h2>
+                <p>
+                    Los usuarios pueden solicitar en cualquier momento la modificación o eliminación
+                    de sus datos personales mediante los canales disponibles en la plataforma.
+                </p>
+
+                <hr>
+
+                <h2>6. Cambios en esta política</h2>
+                <p>
+                    Nos reservamos el derecho de actualizar esta política de privacidad con el fin
+                    de mejorar nuestros servicios y adaptarnos a nuevas normativas.
+                </p>
+
+                <hr>
+                
+                <p class="text-muted mt-4">
+                    Última actualización: Marzo 2026
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+</div>
+{% endblock %}

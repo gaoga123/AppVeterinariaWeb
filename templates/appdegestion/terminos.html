@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+
+{% block title %}Términos y Condiciones | Veterinaria Web{% endblock %}
+
+{% block meta_description %}
+    Términos y condiciones de uso de Veterinaria Web. Conozca las normas, responsabilidades y condiciones del servicio veterinario online.
+{% endblock %}
+
+{% block meta_robots %}
+    <meta name="robots" content="index, follow">
+{% endblock %}
+
+{% block header %}
+    <li class="nav-item">
+        <a class="nav-link opcion-header" onclick="history.back()" title="Volver a la página anterior">
+            ⬅️ Regresar
+        </a>
+    </li>
+ 
+{% endblock %}
+
+{% block contenedor %}
+<div class="container-fluid" role="main">
+
+    <header role="banner">
+        <div class="container">
+            <div class="eslogan">
+                <h1 id="terminos">Términos y Condiciones de Veterinaria Web</h1>
+                <p class="text-secundario">
+                    En esta sección se detallan las condiciones de uso de nuestra plataforma
+                    veterinaria online, incluyendo derechos, responsabilidades y normas
+                    aplicables a todos los usuarios.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <br>
+
+    <section class="container my-4" aria-labelledby="terminos">
+        <div class="card card-panel">
+            <div class="card-body">
+
+                <h2>1. Aceptación de los términos</h2>
+                <p>
+                    Al acceder y utilizar Veterinaria Web, el usuario acepta cumplir con los
+                    presentes términos y condiciones de uso. En caso de no estar de acuerdo,
+                    se recomienda no utilizar la plataforma.
+                </p>
+
+                <hr>
+
+                <h2>2. Uso del sistema</h2>
+                <p>
+                    La plataforma está destinada a la gestión de mascotas, turnos veterinarios
+                    y servicios relacionados. No debe utilizarse para actividades indebidas,
+                    fraudulentas o ajenas a su propósito.
+                </p>
+
+                <hr>
+
+                <h2>3. Responsabilidad del usuario</h2>
+                <p>
+                    El usuario es responsable de la veracidad de los datos ingresados, así como
+                    del uso adecuado de su cuenta dentro del sistema.
+                </p>
+
+                <hr>
+
+                <h2>4. Disponibilidad del servicio</h2>
+                <p>
+                    Nos esforzamos por garantizar la disponibilidad continua del servicio,
+                    aunque no podemos asegurar la ausencia de interrupciones o errores técnicos.
+                </p>
+
+                <hr>
+
+                <h2>5. Propiedad intelectual</h2>
+                <p>
+                    Todo el contenido, diseño y funcionalidad de Veterinaria Web pertenece a sus
+                    desarrolladores y se encuentra protegido por las leyes de propiedad intelectual.
+                </p>
+
+                <hr>
+
+                <h2>6. Modificaciones</h2>
+                <p>
+                    Nos reservamos el derecho de modificar estos términos y condiciones en
+                    cualquier momento para mejorar el servicio o adaptarnos a cambios legales.
+                </p>
+
+                <hr>
+
+                <h2>7. Limitación de responsabilidad</h2>
+                <p>
+                    Veterinaria Web no será responsable por daños derivados del uso indebido
+                    de la plataforma por parte de los usuarios.
+                </p>
+
+                <hr>
+
+                <p class="text-muted mt-4">
+                    Última actualización: Marzo 2026
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+<div id="content-main">
+
+  <h1>{% trans "Confirmar citas" %}</h1>
+
+  <p>
+    {% trans "¿Estás seguro de que deseas confirmar las siguientes citas?" %}
+  </p>
+
+  <ul>
+    {% for cita in citas %}
+      <li>
+        <strong>{{ cita.mascota }}</strong>
+        — {{ cita.fecha }}
+        — {{ cita.veterinario }}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <form method="post" style="margin-top: 20px;">
+    {% csrf_token %}
+
+    {% for cita in citas %}
+      <input type="hidden" name="_selected_action" value="{{ cita.pk }}">
+    {% endfor %}
+
+    <input type="hidden" name="action" value="confirmar_citas">
+    <input type="hidden" name="apply" value="true">
+
+    <div class="submit-row">
+      <input
+        type="submit"
+        value="{% trans 'Confirmar' %}"
+        class="default"
+      >
+
+      <a href="../" class="button cancel-link">
+        {% trans "Cancelar" %}
+      </a>
+    </div>
+  </form>
+
+</div>
+{% endblock %}
+
+

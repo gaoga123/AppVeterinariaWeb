@@ -1,0 +1,184 @@
+{% extends "layout.html" %}
+
+{% block meta %}
+    <meta name="description" content="Busque mascotas registradas en Veterinaria Web de forma rápida. Encuentre información detallada de mascotas por nombre en segundos.">
+    <meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+{% block title %}Buscador de Mascotas | Veterinaria Web{% endblock %}
+
+{% block header %}
+    <li class="nav-item">
+        <a class="nav-link opcion-header" href="{% url 'opciones_mascotas' %}" aria-label="Volver a opciones de mascotas">
+            ⬅️ Regresar
+        </a>
+    </li>
+{% endblock %}
+
+{% block contenedor %}
+<main class="container-fluid resenias">
+
+    <header class="py-4 text-center">
+        <div class="container">
+            <div class="eslogan">
+                <h1>Buscar Mascotas Registradas</h1>
+                <p class="text-muted">
+                    Encuentre rápidamente la información de sus mascotas dentro del sistema
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="container bienvenida mt-4 text-center">
+
+        <h2>Búsqueda por nombre de mascota</h2>
+
+        <p class="text-muted">
+            Escriba al menos 2 caracteres para comenzar la búsqueda en tiempo real
+        </p>
+
+        <hr>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <div class="buscador-container">
+
+                    <label for="buscador-mascotas" class="visually-hidden">
+                        Buscar mascotas por nombre
+                    </label>
+
+                    <input
+                        type="text"
+                        id="buscador-mascotas"
+                        class="form-control form-control-lg buscador-input"
+                        placeholder="Ej: Rocky, Luna, Toby"
+                        autocomplete="off"
+                        aria-label="Buscar mascotas por nombre"
+                    >
+                </div>
+
+                <ul 
+                    id="resultados-mascotas"
+                    class="list-group list-group-flush mt-3"
+                    aria-live="polite"
+                ></ul>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}
+
+
+{% block extra_js %}
+    <script>
+        $(document).ready(function () {
+
+            const $input = $("#buscador-mascotas");
+            const $resultados = $("#resultados-mascotas");
+            const BUSCAR_URL = "{% url 'buscar_mascotas_ajax' %}";
+
+            let timeout = null;
+            let ajaxRequest = null;
+
+            function renderResultados(data) {
+                $resultados.empty();
+
+                if (data.length === 0) {
+                    $resultados.append(`
+                        <li class="list-group-item text-muted text-center">
+                            No se encontraron mascotas
+                        </li>
+                    `);
+                    return;
+                }
+
+                const fragment = document.createDocumentFragment();
+
+                data.forEach(m => {
+                    const li = document.createElement("li");
+                    li.className = "list-group-item";
+
+                    li.innerHTML = `
+                        <article class="resultado-mascota d-flex align-items-center gap-3">
+
+                            <img 
+                                src="${m.imagen || '/static/img/Mascotas.png'}"
+                                class="img-resultado"
+                                alt="Foto de ${m.nombre}"
+                                loading="lazy"
+                            >
+
+                            <div class="info-mascota">
+                                <strong>${m.nombre}</strong>
+                                <p class="mb-0 text-muted">
+                                    ${m.especie} • ${m.raza || "—"} • ${m.edad} años
+                                </p>
+                            </div>
+
+                        </article>
+                    `;
+
+                    fragment.appendChild(li);
+                });
+
+                $resultados.append(fragment);
+
+                gsap.from(".resultado-mascota", {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.4,
+                    stagger: 0.05
+                });
+            }
+
+            $input.on("keyup", function () {
+
+                const query = $input.val().trim();
+
+                clearTimeout(timeout);
+
+                if (query.length < 2) {
+                    $resultados.empty();
+                    return;
+                }
+
+                timeout = setTimeout(() => {
+
+                    if (ajaxRequest) {
+                        ajaxRequest.abort();
+                    }
+
+                    ajaxRequest = $.ajax({
+                        url: BUSCAR_URL,
+                        data: { q: query },
+                        dataType: "json",
+                        success: renderResultados,
+                        error: function () {
+                            $resultados.html(`
+                                <li class="list-group-item text-danger text-center">
+                                    Ocurrió un error al buscar mascotas
+                                </li>
+                            `);
+                        }
+                    });
+
+                }, 300);
+
+            });
+
+        });
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SearchAction",
+            "target": "/mascotas/buscar/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    </script>
+ 
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block meta %}
+    <meta name="description" content="Registre una nueva mascota en Veterinaria Web. Complete los datos y gestione la información de sus mascotas de forma rápida y segura.">
+    <meta name="robots" content="index, follow">
+{% endblock %}
+
+{% block title %}Registro de Mascotas | Veterinaria Web{% endblock %}
+
+{% block header %}
+    <li class="nav-item">
+        <a class="nav-link opcion-header" href="{% url 'opciones_mascotas' %}" aria-label="Volver a opciones de mascotas">
+            ⬅️ Regresar
+        </a>
+    </li>
+{% endblock %}
+
+{% block contenedor %}
+<main class="container-fluid resenias">
+
+    <header class="py-4 text-center">
+        <div class="container">
+            <div class="eslogan">
+                <h1>Registrar Nueva Mascota</h1>
+                <p class="text-muted">
+                    Agregue una mascota a su perfil para gestionar su información y atención veterinaria
+                </p>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="container bienvenida mt-4 text-center">
+        <h2>Complete los datos de su mascota</h2>
+        <p class="text-muted">
+            Ingrese la información solicitada para registrar correctamente a su mascota en el sistema
+        </p>
+        <hr>
+    </section>
+
+    <section class="container my-4">
+        <div class="card card-form-mascota shadow-sm">
+            <div class="card-body">
+
+                <form method="post" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+
+                    <fieldset>
+                        <legend class="visually-hidden">Datos de la mascota</legend>
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                {{ form.especie.label_tag }}
+                                {{ form.especie }}
+                            </div>
+
+                            <div class="col-md-6">
+                                {{ form.raza.label_tag }}
+                                {{ form.raza }}
+                            </div>
+
+                            <div class="col-md-6">
+                                {{ form.nombre.label_tag }}
+                                {{ form.nombre }}
+                            </div>
+
+                            <div class="col-md-6">
+                                {{ form.sexo.label_tag }}
+                                {{ form.sexo }}
+                            </div>
+
+                            <div class="col-md-6">
+                                {{ form.edad.label_tag }}
+                                {{ form.edad }}
+                            </div>
+
+                            <div class="col-md-12">
+                                {{ form.imagen.label_tag }}
+                                {{ form.imagen }}
+
+                                <img 
+                                    id="previewMascota"
+                                    class="preview-mascota mt-3 d-none"
+                                    alt="Vista previa de la mascota seleccionada"
+                                    loading="lazy"
+                                >
+
+                                <small class="text-muted d-block mt-2">
+                                    Puede subir una imagen para identificar a su mascota más fácilmente
+                                </small>
+                            </div>
+
+                            <div class="col-12 d-grid mt-3">
+                                <button 
+                                    type="submit"
+                                    class="btn btn-primary btn-lg btn-submit"
+                                    aria-label="Guardar nueva mascota"
+                                >
+                                    Guardar Mascota
+                                </button>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+{% endblock %}
+
+{% block extra_js %}
+    {% load static %}
+    <script src="{% static 'js/mascotas.js' %}"></script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Form",
+            "name": "Registro de Mascotas",
+            "description": "Formulario para registrar una nueva mascota en Veterinaria Web"
+        }
+    </script>
+{% endblock %}

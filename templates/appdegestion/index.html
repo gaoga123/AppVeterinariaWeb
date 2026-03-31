@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+
+{% block meta_robots %}
+    <meta name="robots" content="index, follow">
+{% endblock %}
+
+{% block title %}Home | Veterinaria Web{% endblock %}
+
+{% load static %}
+
+{% block header %}
+<ul class="navbar-nav">
+    <li class="nav-item">
+    </li>
+</ul>
+{% endblock %}
+
+{% block contenedor %}
+<header>
+    <div class="container">
+        <div class="eslogan">
+            <h1>Veterinaria Web - Turnos y cuidado de mascotas online</h1>
+            <h2 class="visually-hidden">Clínica veterinaria digital para perros y gatos</h2>
+        </div>
+    </div>
+</header>
+
+<br>
+
+<section class="container my-5 seccion-frase">
+    <div class="eslogan">
+    <h2>Clínica veterinaria online</h2>
+    <br>
+    <h5 class="text-secundario">
+        En Veterinaria Web ofrecemos un servicio integral para el cuidado de mascotas,
+        permitiéndote gestionar turnos veterinarios, consultar historiales y acceder
+        a información relevante sobre la salud de perros y gatos.
+    </h5>
+
+    <h5 class="text-secundario">
+        Nuestro objetivo es brindar una experiencia simple, rápida y segura para dueños
+        de mascotas que buscan atención veterinaria de calidad.
+    </h5>
+    </div>
+</section>
+
+<br>
+
+<section class="container my-4 seccion-mascotas">
+    <h2>Conozca algunos de nuestros pacientes...</h2>
+    <hr>
+
+    <div id="carouselMascotas" class="carousel slide carousel-rounded">
+
+        <div class="carousel-indicators">
+            {% for mascota in mascotas %}
+            <button type="button"
+                    data-bs-target="#carouselMascotas"
+                    data-bs-slide-to="{{ forloop.counter0 }}"
+                    class="{% if forloop.first %}active{% endif %}"
+                    aria-current="{% if forloop.first %}true{% endif %}"
+                    aria-label="Galería de mascotas atendidas">
+            </button>
+            {% endfor %}
+        </div>
+
+        <div class="carousel-inner">
+            {% for mascota in mascotas %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+
+                {% if mascota.imagen %}
+                    <img src="{{ mascota.imagen.url }}" 
+                         class="d-block w-100 imagen-carrusel"
+                         alt="Mascota {{ mascota.nombre }} - {{ mascota.especie }} atendida en Veterinaria Web"
+                         loading="lazy"
+                         width="800"
+                         height="500">
+                {% else %}
+                    <img src="{% static 'img/Mascotas.png' %}" 
+                         class="d-block w-100 imagen-carrusel"
+                         alt="Sin imagen"
+                         loading="lazy"
+                         width="800"
+                         height="500">
+                {% endif %}
+
+                <div class="carousel-caption d-none d-md-block caption-mascota">
+                    <h5>{{ mascota.nombre }} ({{ mascota.especie }}, {{ mascota.edad }} años)</h5>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <button class="carousel-control-prev" type="button"
+                data-bs-target="#carouselMascotas" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button"
+                data-bs-target="#carouselMascotas" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+</section>
+
+<br>
+
+<section class="container seccion-frase">
+    <div class="eslogan">
+        <h2>"Más vida para sus vidas..."</h2>
+        <br>
+        <h5 class="text-secundario">
+            Veterinaria Web es un espacio pensado para el cuidado integral de su mascota.
+        </h5>
+        <h5 class="text-secundario">
+            A través de esta plataforma, Ud. podrá gestionar consultas, conocer a nuestros pacientes,
+            leer opiniones de otros clientes y acceder a nuestros servicios de forma simple
+            y segura.
+        </h5>
+    </div>
+</section>
+
+<br>
+
+<section class="container my-4 seccion-resenias">
+    <h2>Opiniones de nuestros clientes...</h2>
+    <hr>
+    <div id="carouselResenias" class="carousel slide">
+        <div class="carousel-indicators">
+            {% for r in resenias %}
+            <button type="button"
+                    data-bs-target="#carouselResenias"
+                    data-bs-slide-to="{{ forloop.counter0 }}"
+                    class="{% if forloop.first %}active{% endif %}"
+                    aria-current="{% if forloop.first %}true{% endif %}"
+                    aria-label="Slide {{ forloop.counter }}">
+            </button>
+            {% endfor %}
+        </div>
+        <div class="carousel-inner">
+            {% for r in resenias %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <div class="caja-resenia anim-resenia mx-auto">
+                    <h5 class="nombre-resenia">{{ r.cliente }}</h5>
+                    <p class="puntuacion-resenia">{{ r.puntuacion }} / 5 ★</p>
+                    <p class="comentario-resenia">{{ r.comentarios }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button"
+                data-bs-target="#carouselResenias" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button"
+                data-bs-target="#carouselResenias" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</section>
+
+<br>
+
+<section class="container seccion-turno">
+    <a class="btn btn-primary btn-lg w-100 btn-turno" href="{% url 'login' %}">Ingresar al Sistema</a>
+</section>
+
+    {% block extra_js %}
+        {% load static %}
+        <script src="{% static 'js/home.js' %}"></script>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "VeterinaryCare",
+            "name": "Veterinaria Web",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "reviewCount": "{{ resenias|length }}"
+            }
+        }
+        </script>
+    {% endblock %}
+
+
+{% endblock %}

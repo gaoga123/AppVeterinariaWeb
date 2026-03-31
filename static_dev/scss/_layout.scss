@@ -1,0 +1,68 @@
+    nav.bg-body-tertiary {
+        background-color: $color2 !important;
+    }
+
+    nav.navbar {
+        background-color: $color2 !important;
+        border-bottom: 4px solid $color3;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+        .container {
+            background-color: $color2;
+
+            .navbar-brand {
+                color: $color3;
+                font-weight: bold;
+                font-size: 1.3rem;
+                letter-spacing: 1px;
+
+                &:hover {
+                    opacity: 0.85;
+                }
+            }
+
+            .navbar-toggler {
+                background-color: $color3;
+                border: none;
+
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+
+            .navbar-collapse {
+
+                ul {
+                    margin: 0;
+
+                    li {
+                        margin-left: 1rem;
+
+                        a {
+                            @extend .opcion-header;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    > br:first-of-type {
+        margin-top: 4rem;
+    }
+
+    footer {
+        background-color: $color2;
+        border-top: 4px solid $color3;
+
+        section.container {
+            text-align: center;
+
+            p {
+                color: $color3;
+                font-size: 0.85rem;
+                margin: 0;
+            }
+        }
+    }
+

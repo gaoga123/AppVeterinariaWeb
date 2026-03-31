@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>{% block title %}Veterinaria Web{% endblock %}</title>
+
+        <meta name="description" content="{% block meta_description %}Plataforma de gestión de turnos y cuidado integral para mascotas.{% endblock %}">
+
+        <meta name="keywords" content="{% block meta_keywords %}veterinaria, mascotas, turnos veterinarios, perros, gatos{% endblock %}">
+
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="{% block canonical %}https://veterinariaweb.com/{% endblock %}">
+
+        <html lang="es">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="{% block og_title %}Veterinaria Web{% endblock %}">
+        <meta property="og:description" content="{% block og_description %}Cuidado integral para tu mascota{% endblock %}">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{% block og_url %}https://veterinariaweb.com/{% endblock %}">
+        <meta property="og:image" content="{% block og_image %}{% static 'img/preview.jpg' %}{% endblock %}">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+        <!-- Preload -->
+        <link rel="preload" href="{% static 'css/style.css' %}" as="style">
+
+    </head>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "VeterinaryCare",
+            "name": "Veterinaria Web",
+            "url": "https://veterinariaweb.com",
+            "areaServed": "Argentina",
+            "description": "Clínica veterinaria online para gestión de turnos y cuidado de mascotas"
+        }
+        </script>
+    <body>
+        
+        {% block content %}{% endblock %}
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+        <!-- Bootstrap JS -->
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+
+        <!-- GreenSock -->
+        <script src="{% static 'js/minified/gsap.min.js' %}"></script>
+
+        <!-- GSAP ScrollTrigger -->
+        <script src="{% static 'js/minified/ScrollTrigger.min.js' %}"></script>
+
+        <!-- JS global -->
+        <script src="{% static 'js/main.js' %}"></script>
+
+        <!-- JS específico por vista -->
+        {% block extra_js %}{% endblock %}
+
+    </body>
+</html>

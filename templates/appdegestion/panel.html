@@ -1,0 +1,164 @@
+{% extends "layout.html" %}
+
+{% block meta_robots %}
+    <meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+{% block title %}Panel de Usuario | Veterinaria Web{% endblock %}
+
+{% block header %}
+ 
+{% endblock %}
+
+{% block contenedor %}
+<div class="container-fluid" role="main">
+
+    <header role="banner">
+        <div class="container">
+            <div class="eslogan">
+                <h1>Panel de Usuario</h1>
+            </div>
+        </div>
+    </header>
+
+    <br>
+
+    <section class="container bienvenida text-center">
+        <h2>Bienvenidx <strong>{{ request.user.username }}</strong>! Por favor seleccione una actividad a realizar</h2>
+        <hr>
+    </section>
+
+    <section class="container my-4 opciones-desarrollo">
+        <div class="row text-center g-3">
+            <div class="col-12 col-sm-6 col-md-3 d-flex">
+                <a class="card card-panel opcion-panel text-decoration-none w-100" href="{% url 'opciones_mascotas' %}">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div class="icono-panel">🐶</div>
+                        <h4>Mascotas</h4>
+                        <p>Registre y consulte la información de sus mascotas de forma rápida y segura</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 d-flex">
+                <a class="card card-panel opcion-panel text-decoration-none w-100" href="{% url 'citas' %}">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div class="icono-panel">📅</div>
+                        <h4>Turnos</h4>
+                        <p>Gestione sus turnos veterinarios de manera simple y organizada</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 d-flex">
+                <a class="card card-panel opcion-panel text-decoration-none w-100" href="{% url 'resenias' %}">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div class="icono-panel">⭐</div>
+                        <h4>Reseñas</h4>
+                        <p>Realice valoraciones para mejorar la experiencia del servicio</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 d-flex">
+                <a class="card card-panel opcion-panel text-decoration-none w-100" href="{% url 'carrito' %}">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div class="icono-panel">🛒</div>
+                        <h4>Tienda</h4>
+                        <p>Compre productos para sus mascotas de forma fácil y rápida</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <br>
+
+    <section class="container otras-opciones text-center">
+        <h2>Notas Rápidas</h2>
+        <hr>
+    </section>
+
+    <div class="container my-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <p class="text-muted mb-4">
+                    Espacio para realizar anotaciones temporales.
+                    Al cerrar el navegador, dichas anotaciones desaparecerán.
+                </p>
+
+                <form id="nota-form" class="row g-2 mb-3">
+                    <div class="col-md-9 col-12">
+                        <input
+                            type="text"
+                            id="nota-input"
+                            class="form-control"
+                            placeholder="Escribir nota rápida..."
+                            required
+                        >
+                    </div>
+
+                    <div class="col-md-3 col-12 d-grid">
+                        <button type="submit" class="btn btn-primary w-100">
+                            Agregar
+                        </button>
+                    </div>
+                </form>
+
+                <ul id="notas-lista" class="list-group"></ul>
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <section class="container otras-opciones text-center">
+        <h2>Finalizar Sesión</h2>
+        <hr>
+    </section>
+
+    <br>
+
+    <section class="container contenedor-logout">
+        <a class="btn btn-secondary btn-lg w-100 btn-logout"
+           href="{% url 'logout' %}"
+           id="btnLogout"
+           data-logout-url="{% url 'logout' %}">
+            Salir del Sistema
+        </a>
+
+    </section>
+
+    <script>
+        const USUARIO_ID = "{{ request.user.id }}";
+    </script>
+
+
+
+
+    {% block extra_js %}
+        {% load static %}
+            <script src="{% static 'js/crud.js' %}" defer></script>
+            <script>
+                $(document).ready(function () {
+
+                    $(".bienvenida h2").hide().slideDown(800);
+
+                    $("#btnLogout").on("click", function (e) {
+                        e.preventDefault();
+
+                        sessionStorage.removeItem("usuario_activo_id");
+
+                        window.location.href = $(this).data("logout-url");
+                    });
+
+                });
+            </script>
+            <script src="{% static 'js/panel.js' %}" defer></script>
+    {% endblock %}
+
+</div>
+{% endblock %}

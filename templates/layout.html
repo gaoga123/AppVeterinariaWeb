@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" role="navigation" aria-label="Menú principal">
+        <div class="container">
+            <a class="navbar-brand" href="/" title="Veterinaria Web - Inicio">
+                Veterinaria Web
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {% block header %}{% endblock %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <br>
+
+    <main>
+        {% block contenedor %}{% endblock %}
+    </main>
+
+    <br>
+
+    <footer class="fixed-bottom" role="contentinfo">
+        <section class="container d-flex justify-content-between align-items-center flex-wrap">
+
+            <p class="m-0">
+                <strong>© 2026 Veterinaria Web</strong> - Clínica veterinaria online
+            </p>
+
+            <div class="footer-links">
+                <a href="{% url 'privacidad' %}" rel="nofollow">Política de privacidad</a>
+                <a href="{% url 'terminos' %}" rel="nofollow">Términos y condiciones</a>
+            </div>
+
+        </section>
+    </footer>
+
+</div>
+
+{% endblock %}

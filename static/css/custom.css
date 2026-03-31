@@ -1,0 +1,458 @@
+body {
+    background: linear-gradient(
+        135deg,
+        #ffc14d,
+        #ffa611,
+        #ff6f00
+    );
+    background-attachment: fixed;
+}
+
+/* PANEL */
+
+.card-panel{
+    border: none;
+    border-radius: 16px;
+    padding: 25px;
+
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(8px);
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+    transition: all 0.3s ease;
+}
+
+.card-panel:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.2);
+}
+
+.icono-panel{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+#notas-lista .list-group-item{
+    background: #fff8c6;
+    border: none;
+
+    border-radius: 10px;
+
+    margin-bottom: 8px;
+
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+
+    transform: rotate(-1deg);
+}
+
+#notas-lista .list-group-item:nth-child(even){
+    transform: rotate(1deg);
+}
+
+/* .container-fluid{
+    background:
+
+    radial-gradient(
+        circle at 10% 20%,
+        rgba(180,220,255,0.2),
+        transparent 40%
+    ),
+
+    radial-gradient(
+        circle at 90% 80%,
+        rgba(200,255,220,0.2),
+        transparent 40%
+    );
+} */
+
+/* OPCIONES_MASCOTAS */
+
+.card-mascota{
+    border-radius:16px;
+    border:none;
+    transition: all 0.3s ease;
+}
+
+.card-mascota:hover{
+    transform: translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
+
+.icono-opcion{
+    font-size:50px;
+}
+
+.card-mascota{
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(8px);
+}
+
+.btn-opcion{
+transition: all 0.25s ease;
+}
+
+.btn-opcion:hover{
+transform:scale(1.05);
+}
+
+/* MASCOTAS */
+
+.card-form-mascota{
+    border:none;
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.12);
+}
+
+.form-control,
+.form-select{
+
+border-radius:10px;
+
+padding:10px 12px;
+
+transition: all 0.25s ease;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+box-shadow:0 0 0 3px rgba(100,180,255,0.25);
+border-color:#6bb6ff;
+
+}
+
+.preview-mascota{
+
+max-width:180px;
+
+border-radius:12px;
+
+display:none;
+
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+
+}
+
+.btn-submit{
+
+transition: all 0.25s ease;
+
+}
+
+.btn-submit:hover{
+
+transform:scale(1.03);
+
+}
+
+/* MASCOTA_CREADA */
+
+.card-mascota{
+
+border:none;
+
+border-radius:16px;
+
+transition: all 0.3s ease;
+
+background: rgba(255,255,255,0.8);
+
+backdrop-filter: blur(8px);
+
+}
+
+.card-mascota:hover{
+
+transform: translateY(-6px);
+
+box-shadow:0 12px 30px rgba(0,0,0,0.2);
+
+}
+
+.img-mascota{
+
+width:100%;
+
+height:150px;
+
+object-fit:cover;
+
+border-radius:10px;
+
+}
+
+/* BUSCAR_MASCOTAS */
+
+.buscador-container{
+
+position:relative;
+
+}
+
+.icono-busqueda{
+
+position:absolute;
+
+left:15px;
+
+top:50%;
+
+transform:translateY(-50%);
+
+font-size:18px;
+
+opacity:0.6;
+
+}
+
+.buscador-input{
+
+padding-left:40px;
+
+border-radius:12px;
+
+transition:all 0.25s ease;
+
+}
+
+.buscador-input:focus{
+
+box-shadow:0 0 0 3px rgba(100,180,255,0.25);
+
+}
+
+.resultado-mascota{
+
+padding:12px;
+
+border-radius:10px;
+
+background:white;
+
+margin-bottom:10px;
+
+box-shadow:0 5px 12px rgba(0,0,0,0.08);
+
+transition:all 0.25s ease;
+
+}
+
+.resultado-mascota:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 10px 20px rgba(0,0,0,0.15);
+
+}
+
+.resultado-mascota{
+
+display:flex;
+
+gap:12px;
+
+align-items:center;
+
+}
+
+.img-resultado{
+
+width:50px;
+
+height:50px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+}
+
+.no-resultados{
+
+text-align:center;
+
+color:#777;
+
+padding:20px;
+
+font-style:italic;
+
+}
+
+/* CITAS */
+
+.card-turno{
+
+border:none;
+
+border-radius:18px;
+
+background:rgba(255,255,255,0.75);
+
+backdrop-filter:blur(10px);
+
+box-shadow:0 18px 45px rgba(0,0,0,0.12);
+
+}
+
+.form-control,
+.form-select{
+
+border-radius:10px;
+
+padding:10px;
+
+transition:all 0.25s ease;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+box-shadow:0 0 0 3px rgba(100,180,255,0.25);
+
+border-color:#6bb6ff;
+
+}
+
+/* CITA_CREADA */
+
+.card-turno{
+
+border:none;
+
+border-radius:16px;
+
+background:rgba(255,255,255,0.8);
+
+backdrop-filter:blur(8px);
+
+transition:all 0.3s ease;
+
+}
+
+.card-turno:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 15px 30px rgba(0,0,0,0.2);
+
+}
+
+.icono-turno{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.card-turno.destacado{
+
+border:2px solid #7ddf8a;
+
+box-shadow:0 10px 25px rgba(120,200,120,0.3);
+
+}
+
+/* RESENIAS */
+
+textarea{
+
+min-height:140px;
+
+resize:vertical;
+
+}
+
+/* RESENIA_CREADA */
+
+.card-resenia{
+
+border:none;
+
+border-radius:16px;
+
+background:rgba(255,255,255,0.85);
+
+backdrop-filter:blur(8px);
+
+transition:all 0.3s ease;
+
+}
+
+.card-resenia:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 15px 30px rgba(0,0,0,0.2);
+
+}
+
+.avatar-resenia{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+/* CARRITO */
+
+.card-producto{
+
+border:none;
+
+border-radius:16px;
+
+background:rgba(255,255,255,0.75);
+
+backdrop-filter:blur(8px);
+
+transition:all 0.3s ease;
+
+}
+
+.card-producto:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 15px 35px rgba(0,0,0,0.2);
+
+}
+
+.img-producto{
+
+width:100%;
+
+height:180px;
+
+object-fit:cover;
+
+border-radius:12px 12px 0 0;
+
+}
+
+.precio{
+
+font-size:20px;
+
+font-weight:bold;
+
+color:#ff6f00;
+
+}
+
+.card-carrito{
+
+border:none;
+
+border-radius:18px;
+
+background:rgba(255,255,255,0.85);
+
+backdrop-filter:blur(10px);
+
+box-shadow:0 20px 40px rgba(0,0,0,0.12);
+
+}

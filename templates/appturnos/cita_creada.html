@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+
+{% block meta %}
+    <meta name="description" content="Turno veterinario solicitado correctamente. Consulte sus citas programadas o agende un nuevo turno en Veterinaria Web.">
+    <meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+{% block title %}Confirmación de Turnos | Veterinaria Web{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block contenedor %}
+<main class="container-fluid">
+
+    <header class="py-4 text-center">
+        <div class="container">
+            <div class="eslogan">
+                <h1 class="text-success">Turno solicitado correctamente</h1>
+                <p class="text-muted">
+                    Su cita fue registrada con éxito y ya forma parte de su agenda
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="container bienvenida mt-4 text-center">
+        <h2>Sus turnos programados</h2>
+        <p class="text-muted">
+            Revise los detalles de sus citas veterinarias registradas
+        </p>
+        <hr>
+    </section>
+
+    <section class="container my-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <div class="row text-center g-3">
+
+                    {% for c in citas %}
+                        <div class="col-md-4 col-sm-6">
+
+                            <article class="card card-turno h-100 shadow-sm">
+
+                                <div class="card-body">
+
+                                    <div class="icono-turno" aria-hidden="true">📅</div>
+
+                                    <h3 class="card-title fs-5">
+                                        {{ c.mascota }}
+                                    </h3>
+
+                                    <p class="text-muted mb-1">
+                                        Veterinario: {{ c.veterinario }}
+                                    </p>
+
+                                    <p class="text-muted small">
+                                        Fecha: {{ c.fecha }}
+                                    </p>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+                    {% empty %}
+                        <div class="col-12">
+                            <p class="text-muted text-center">
+                                Aún no tiene turnos registrados.
+                            </p>
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="container bienvenida mt-5 text-center">
+        <h2>¿Qué desea hacer ahora?</h2>
+        <p class="text-muted">
+            Puede agendar un nuevo turno o volver al panel principal
+        </p>
+        <hr>
+    </section>
+
+    <section class="container my-4 opciones-desarrollo">
+        <nav class="row text-center g-3 justify-content-center">
+
+            <div class="col-md-4">
+                <a 
+                    class="btn btn-primary btn-lg w-100 btn-opcion"
+                    href="{% url 'citas' %}"
+                    aria-label="Solicitar un nuevo turno veterinario"
+                >
+                    Solicitar otro turno
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a 
+                    class="btn btn-secondary btn-lg w-100 btn-opcion"
+                    href="{% url 'panel' %}"
+                    aria-label="Volver al menú principal"
+                >
+                    Ir al menú principal
+                </a>
+            </div>
+
+        </nav>
+    </section>
+
+</main>
+{% endblock %}
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MedicalAppointment",
+        "name": "Turno veterinario confirmado",
+        "description": "Detalle de cita veterinaria registrada en el sistema"
+    }
+</script>

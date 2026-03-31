@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block meta_robots %}
+    <meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+{% block title %}Confirmación de Compra | Veterinaria Web{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block contenedor %}
+
+<main class="container-fluid">
+
+<header class="py-4 text-center">
+    <div class="container">
+        <div class="eslogan">
+            <h1 class="text-success">¡Compra realizada con éxito!</h1>
+            <p class="text-muted">
+                Su pedido ha sido procesado correctamente. Gracias por confiar en nuestra tienda veterinaria
+            </p>
+        </div>
+    </div>
+</header>
+
+<section class="container bienvenida mt-4 text-center">
+    <h2>Resumen de su compra</h2>
+    <p class="text-muted">
+        A continuación puede ver el detalle de los productos adquiridos
+    </p>
+    <hr>
+</section>
+
+<section class="container my-4">
+    <div class="card card-carrito shadow-sm">
+        <div class="card-body">
+
+            <div class="row text-center g-3">
+
+                {% if pedido and pedido.detalles.all %}
+                    {% for d in pedido.detalles.all %}
+                        <div class="col-md-4 col-sm-6">
+                            <article class="card h-100 shadow-sm">
+
+                                <div class="card-body">
+
+                                    <h3 class="card-title h5">
+                                        {{ d.producto.nombre }}
+                                    </h3>
+
+                                    <p class="text-muted small">
+                                        Cantidad: {{ d.cantidad }}
+                                    </p>
+
+                                    <p class="text-muted small">
+                                        Precio: ${{ d.precio }}
+                                    </p>
+
+                                    <p class="fw-bold">
+                                        Subtotal: ${{ d.subtotal }}
+                                    </p>
+
+                                </div>
+
+                            </article>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12">
+                        <p class="text-muted text-center">
+                            No se encontró información del pedido.
+                        </p>
+                    </div>
+                {% endif %}
+
+            </div>
+
+            {% if pedido %}
+            <div class="mt-4 text-end">
+                <h4>Total a pagar: <strong>${{ pedido.total }}</strong></h4>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</section>
+
+<section class="container bienvenida mt-5 text-center">
+    <h2>¿Qué desea hacer ahora?</h2>
+    <p class="text-muted">
+        Puede continuar comprando o volver al panel principal
+    </p>
+    <hr>
+</section>
+
+<section class="container my-4 opciones-desarrollo">
+    <nav class="row text-center g-3 justify-content-center">
+
+        <div class="col-md-4">
+            <a 
+                class="btn btn-primary btn-lg w-100 btn-opcion"
+                href="{% url 'carrito' %}"
+                aria-label="Seguir comprando productos"
+            >
+                Seguir comprando
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a 
+                class="btn btn-secondary btn-lg w-100 btn-opcion"
+                href="{% url 'panel' %}"
+                aria-label="Volver al menú principal"
+            >
+                Ir al menú principal
+            </a>
+        </div>
+
+    </nav>
+</section>
+```
+
+</main>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+    // Limpieza extra por seguridad (por si el usuario vuelve atrás)
+    localStorage.removeItem("carrito");
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Order",
+    "description": "Compra realizada en tienda veterinaria",
+    "seller": {
+        "@type": "Organization",
+        "name": "Veterinaria Web"
+    }
+}
+</script>
+
+{% endblock %}

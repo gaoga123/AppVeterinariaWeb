@@ -1,0 +1,71 @@
+.opcion-header {
+    color: $color3;
+}
+
+.eslogan {
+    h1, h4 {
+        color: $color2;
+        font-weight: bold;
+    }
+}
+
+.seccion-mascotas {
+    h3 {
+        color: inherit;
+    }
+    hr {
+        border: 1px solid $color3;
+    }
+    .imagen-carrusel {
+        height: 300px;
+        object-fit: cover;
+    }
+    .caption-mascota {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 1rem;
+        border-radius: 8px;
+        h5 {
+            color: $color3;
+        }
+    }
+}
+
+.seccion-frase {
+    h4 {
+        font-style: italic;
+    }
+}
+
+.seccion-resenias {
+    h3 {
+        color: inherit;
+    }
+    hr {
+        border: 1px solid $color3;
+    }
+    .caja-resenia {
+        width: 100%;
+        background-color: $color3;
+        padding: 1.5rem;
+        border-radius: 10px;
+    }
+    .nombre-resenia {
+        color: $color5;
+        font-weight: bold;
+    }
+    .puntuacion-resenia {
+        font-size: 1.4rem;
+        color: $color1;
+        margin-bottom: .5rem;
+    }
+    .comentario-resenia {
+        color: $color6;
+    }
+}
+
+.seccion-turno {
+    .btn-turno {
+        border: 4px solid $color3;
+        font-weight: bold;
+    }
+}

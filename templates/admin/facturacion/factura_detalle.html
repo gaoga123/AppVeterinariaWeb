@@ -1,0 +1,46 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<h1>Factura #{{ factura.id }}</h1>
+
+<p><strong>Cliente:</strong> {{ factura.cliente }}</p>
+<p><strong>Fecha:</strong> {{ factura.fecha }}</p>
+<p><strong>Método de pago:</strong> {{ factura.metodo_pago }}</p>
+<p><strong>Total:</strong> ${{ factura.total }}</p>
+
+<hr>
+
+<h2>Detalles</h2>
+
+<table class="adminlist table table-striped">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Consulta</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for d in detalles %}
+        <tr>
+            <td>{{ d.producto|default:"—" }}</td>
+            <td>{{ d.consulta|default:"—" }}</td>
+            <td>{{ d.cantidad }}</td>
+            <td>${{ d.subtotal }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Sin detalles cargados</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+
+<a href="{% url 'admin:app_detallefactura_add' %}?factura={{ factura.id }}" class="button default">
+    Agregar detalle
+</a>
+
+{% endblock %}
