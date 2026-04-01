@@ -12,4 +12,4 @@ Disallow: /mascotas/buscar/ajax/
 Disallow: /turnos/turno-confirmado/
 
 
-Sitemap: http://veterinariaweb.com/sitemap.xml
+Sitemap: https://veterinariaweb.onrender.com/sitemap.xml
